@@ -45,15 +45,15 @@ const DetailPage = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="bg-gray-200">
+        <div >
           <div className="bg-white p-4 rounded shadow mb-4">
-            <p className="text-xl font-bold">Author: {detailPost?.author}</p>
-            <p className="text-lg">{detailPost?.content}</p>
+            <p className="text-xl bg-gray-200 font-bold">{detailPost?.author}</p>
+            <p className="text-lg bg-gray-100">{detailPost?.content}</p>
           </div>
           <Form
             name="basic"
             labelCol={{
-              span: 8,
+              span: 5,
             }}
             wrapperCol={{
               span: 16,
@@ -68,7 +68,7 @@ const DetailPage = () => {
             autoComplete="off"
           >
             <Form.Item
-              label="comment"
+              label="Comment"
               name="content"
               rules={[
                 {
@@ -87,13 +87,13 @@ const DetailPage = () => {
               }}
             >
               <Button type="default" htmlType="submit">
-                Create
+                Add a comment
               </Button>
             </Form.Item>
           </Form>
           <div className="bg-white p-4 rounded shadow mt-4">
             <h3 className="text-xl font-bold">
-              Comments: {detailPost.listcomment.length}
+              {detailPost.listcomment.length} Comments
             </h3>
             {detailPost.listcomment &&
               detailPost.listcomment.map((comment) => {

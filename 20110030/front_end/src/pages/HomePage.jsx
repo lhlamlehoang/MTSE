@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Input, Modal, message } from "antd";
+import TextArea from "antd/es/input/TextArea";
 
 const HomePage = () => {
   const [form] = Form.useForm();
@@ -75,19 +76,22 @@ const HomePage = () => {
     getListPost();
   }, []);
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4">Welcome to our Blog</h1>
+    <div className="container mx-auto p-4"
+    style={{
+      maxWidth: 800,
+    }}>
+      <h1 className="text-3xl font-bold mb-4">Basic Blog</h1>
 
       <Form
         name="basic"
         labelCol={{
-          span: 8,
+          span: 5,
         }}
         wrapperCol={{
           span: 16,
         }}
         style={{
-          maxWidth: 600,
+          maxWidth: 500,
         }}
         initialValues={{
           remember: true,
@@ -96,7 +100,7 @@ const HomePage = () => {
         autoComplete="off"
       >
         <Form.Item
-          label="author"
+          label="Author"
           name="author"
           rules={[
             {
@@ -109,7 +113,7 @@ const HomePage = () => {
         </Form.Item>
 
         <Form.Item
-          label="content"
+          label="Content"
           name="content"
           rules={[
             {
@@ -118,17 +122,17 @@ const HomePage = () => {
             },
           ]}
         >
-          <Input />
+           <TextArea />
         </Form.Item>
 
         <Form.Item
           wrapperCol={{
-            offset: 8,
+            offset: 5,
             span: 16,
           }}
         >
           <Button type="default" htmlType="submit">
-            Create
+            Add a new post
           </Button>
         </Form.Item>
       </Form>
@@ -146,10 +150,9 @@ const HomePage = () => {
               <div className="content bg-gray-100 p-2">
                 <p>{post.content}</p>
               </div>
-
               <div className="button-container flex justify-between items-center">
                 <button
-                  className="view-button bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                  className="view-button bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
                   onClick={() => navigate(`/detail/${post.id}`)}
                 >
                   View detail
@@ -157,7 +160,7 @@ const HomePage = () => {
 
                 <button
                   onClick={() => showModal(post.author, post.content, post.id)}
-                  className="edit-button bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+                  className="edit-button bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                   Edit Post
                 </button>
@@ -198,7 +201,7 @@ const HomePage = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="author"
+            label="Author"
             name="author"
             rules={[
               {
@@ -211,7 +214,7 @@ const HomePage = () => {
           </Form.Item>
 
           <Form.Item
-            label="content"
+            label="Content"
             name="content"
             rules={[
               {
